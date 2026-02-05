@@ -1,0 +1,36 @@
+[
+  {
+    "id": "4fd24206-58d5-4b25-8f95-92b8a2dcb300",
+    "name": "City Hotel Fitout",
+    "status": "Active",
+    "projectNumber": "PRJ-1001",
+    "plannedStartDate": "2026-02-10T00:00:00.000Z",
+    "plannedEndDate": "2026-05-30T00:00:00.000Z",
+    "workOrders": [
+      {
+        "id": "b97f0f57-cd1a-46e5-b7f3-258e041d13f2",
+        "projectId": "4fd24206-58d5-4b25-8f95-92b8a2dcb300",
+        "name": "Reception Joinery",
+        "plannedStartDate": "2026-03-01T00:00:00.000Z",
+        "plannedEndDate": "2026-03-25T00:00:00.000Z"
+      }
+    ],
+    "budgetMaterials": [
+      {
+        "workOrderId": "b97f0f57-cd1a-46e5-b7f3-258e041d13f2",
+        "materialSku": "PLY-18-BIRCH",
+        "materialName": "Birch Plywood 18mm",
+        "quantityRequired": 45,
+        "unit": "sheet",
+        "supplier": "WoodCo",
+        "leadTimeDays": 10
+      },
+      {
+        "workOrderId": "b97f0f57-cd1a-46e5-b7f3-258e041d13f2",
+        "materialSku": "LAM-WHITE-MATTE",
+        "quantityRequired": 120,
+        "unit": "m2"
+      }
+    ]
+  }
+]

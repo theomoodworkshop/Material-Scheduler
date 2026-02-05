@@ -1,0 +1,72 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+enum MaterialStatus {
+  OVERDUE
+  DUE_SOON
+  UPCOMING
+}
+
+model Project {
+  id               String                @id
+  name             String
+  status           String
+  projectNumber    String?
+  plannedStartDate DateTime?
+  plannedEndDate   DateTime?
+  updatedAt        DateTime              @updatedAt
+  workOrders       WorkOrder[]
+  materials        MaterialRequirement[]
+}
+
+model WorkOrder {
+  id               String                @id
+  projectId        String
+  name             String
+  plannedStartDate DateTime?
+  plannedEndDate   DateTime?
+  project          Project               @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  materials        MaterialRequirement[]
+}
+
+model MaterialRequirement {
+  id                   Int            @id @default(autoincrement())
+  projectId            String
+  workOrderId          String?
+  materialSku          String
+  materialName         String?
+  quantityRequired     Float
+  unit                 String?
+  leadTimeDays         Int            @default(14)
+  supplier             String?
+  requiredOnDate       DateTime?
+  recommendedOrderDate DateTime?
+  status               MaterialStatus
+  lastSyncedAt         DateTime
+  project              Project        @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  workOrder            WorkOrder?     @relation(fields: [workOrderId], references: [id], onDelete: SetNull)
+
+  @@index([projectId])
+  @@index([status])
+  @@index([recommendedOrderDate])
+}
+
+model MaterialLibrary {
+  materialSku         String  @id
+  name                String
+  defaultLeadTimeDays Int     @default(14)
+  unit                String?
+  supplier            String?
+}
+
+model SyncMeta {
+  key       String   @id
+  value     String
+  updatedAt DateTime @updatedAt
+}
