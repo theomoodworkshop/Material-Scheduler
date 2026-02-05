@@ -1,0 +1,16 @@
+[
+  {
+    "materialSku": "PLY-18-BIRCH",
+    "name": "Birch Plywood 18mm",
+    "defaultLeadTimeDays": 14,
+    "unit": "sheet",
+    "supplier": "WoodCo"
+  },
+  {
+    "materialSku": "LAM-WHITE-MATTE",
+    "name": "White Matte Laminate",
+    "defaultLeadTimeDays": 21,
+    "unit": "m2",
+    "supplier": "SurfaceWorks"
+  }
+]
